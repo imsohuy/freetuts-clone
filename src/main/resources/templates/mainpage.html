@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<p th:text="${size}"></p>
+	<div style="width: 65%; float: left; margin-right: 5%;">
+		<table border="1" style="width: 90%; float: left; margin-right: 5%; margin-left: 5%;">
+			<tr style="width: 100%">
+				<th>Coupon giam gia</th>
+			</tr>
+
+			<tr th:each="post : ${programPostList}">
+				<td><img th:if="${post.image} != null and ${post.image} != ''" class="product-detail-img"
+						th:src="@{'/image/'+${post.image}}" height="100px" width="70px"> <img
+						th:if="${post.image} == null or ${post.image} == ''" class="product-detail-img"
+						th:src="@{/image/no_image.png}" height="100px" width="70px"></td>
+				<td th:text="${post.tittle}"></td>
+			</tr>
+		</table>
+
+		<table border="1" style="width: 90%; float: left; margin-right: 5%; margin-left: 5%;">
+			<tr style="width: 100%">
+				<th>Programing</th>
+			</tr>
+
+			<tr th:each="post : ${programPostList}">
+				<td><img th:if="${post.image} != null and ${post.image} != ''" class="product-detail-img"
+						th:src="@{'/image/'+${post.image}}" height="100px" width="70px"> <img
+						th:if="${post.image} == null or ${post.image} == ''" class="product-detail-img"
+						th:src="@{/image/no_image.png}" height="100px" width="70px"></td>
+				<td th:text="${post.tittle}"></td>
+			</tr>
+		</table>
+
+		<table border="1" style="width: 90%; float: left; margin-right: 5%; margin-left: 5%;">
+			<tr>
+				<th>Web Free</th>
+			</tr>
+
+			<tr th:each="post : ${webPostList}">
+				<td><img th:if="${post.image} != null and ${post.image} != ''" class="product-detail-img"
+						th:src="@{'/image/'+${post.image}}" height="100px" width="70px"> <img
+						th:if="${post.image} == null or ${post.image} == ''" class="product-detail-img"
+						th:src="@{/image/no_image.png}" height="100px" width="70px"></td>
+				<td th:text="${post.tittle}"></td>
+			</tr>
+		</table>
+	</div>
+
+	<div style="width: 30%; float: right;">
+
+	</div>
+
+</body>
+
+</html>
