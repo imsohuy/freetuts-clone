@@ -1,61 +1,558 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
-</head>
+<head th:include="fragments :: head" th:with="title='Main Page'" />
 
 <body>
-	<p th:text="${size}"></p>
-	<div style="width: 65%; float: left; margin-right: 5%;">
-		<table border="1" style="width: 90%; float: left; margin-right: 5%; margin-left: 5%;">
-			<tr style="width: 100%">
-				<th>Coupon giam gia</th>
-			</tr>
+  <div th:include="fragments :: navigation-bar" />
 
-			<tr th:each="post : ${programPostList}">
-				<td><img th:if="${post.image} != null and ${post.image} != ''" class="product-detail-img"
-						th:src="@{'/image/'+${post.image}}" height="100px" width="70px"> <img
-						th:if="${post.image} == null or ${post.image} == ''" class="product-detail-img"
-						th:src="@{/image/no_image.png}" height="100px" width="70px"></td>
-				<td th:text="${post.tittle}"></td>
-			</tr>
-		</table>
+  <div style="min-height: 500px;" class="body">
+    <div class="body-container">
 
-		<table border="1" style="width: 90%; float: left; margin-right: 5%; margin-left: 5%;">
-			<tr style="width: 100%">
-				<th>Programing</th>
-			</tr>
+      <div class="main-panel">
+        <div class="box">
+          <header class="box-header">
+            <a href="https://freetuts.net/giam-gia" title="Mã giảm giá">Coupon giảm giá</a>
+          </header>
+          <div class="box-content">
+            <div class="owl-carousel owl-theme owl-loaded" data-item="3">
+              <div class="owl-stage-outer">
+                <div class="owl-stage">
 
-			<tr th:each="post : ${programPostList}">
-				<td><img th:if="${post.image} != null and ${post.image} != ''" class="product-detail-img"
-						th:src="@{'/image/'+${post.image}}" height="100px" width="70px"> <img
-						th:if="${post.image} == null or ${post.image} == ''" class="product-detail-img"
-						th:src="@{/image/no_image.png}" height="100px" width="70px"></td>
-				<td th:text="${post.tittle}"></td>
-			</tr>
-		</table>
+                  <div th:each="discountPost : ${discountPostList}" class="owl-item">
+                    <a th:href="@{'/' + ${discountPost.postContent}}" th:title="${discountPost.tittle}">
+                      <img th:src="@{'/image/' + ${discountPost.image}}" alt="${discountPost.tittle}">
+                    </a>
+                    <h3>
+                      <a class="post-title" th:text="${discountPost.tittle}"
+                        th:href="@{'/' + ${discountPost.postContent}}" th:title="${discountPost.tittle}">
+                      </a>
+                    </h3>
+                  </div>
 
-		<table border="1" style="width: 90%; float: left; margin-right: 5%; margin-left: 5%;">
-			<tr>
-				<th>Web Free</th>
-			</tr>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+              $(document).ready(function () {
+                $('.owl-carousel').owlCarousel({
+                  loop: false,
+                });
+              });
+            </script>
+          </div>
+        </div>
 
-			<tr th:each="post : ${webPostList}">
-				<td><img th:if="${post.image} != null and ${post.image} != ''" class="product-detail-img"
-						th:src="@{'/image/'+${post.image}}" height="100px" width="70px"> <img
-						th:if="${post.image} == null or ${post.image} == ''" class="product-detail-img"
-						th:src="@{/image/no_image.png}" height="100px" width="70px"></td>
-				<td th:text="${post.tittle}"></td>
-			</tr>
-		</table>
-	</div>
+        <div class="box">
+          <header class="box-header">
+            <h2>Lập trình</h2>
+          </header>
 
-	<div style="width: 30%; float: right;">
+          <div class="box-content">
+            <div class="newest-post">
+              <div class="news-image">
+                <a th:href="@{'/' + ${programPostList[0].postContent}}"
+                  th:title="' ' + ${programPostList[0].postContent}">
+                  <img th:src="@{'/image/' + ${programPostList[0].image}}" th:alt="${programPostList[0].tittle}"
+                    width="284" height="180">
+                </a>
+              </div>
+              <div class="news-summary">
+                <h3>
+                  <a th:text="${programPostList[0].tittle}" class="post-title"
+                    th:href="@{'/' + ${programPostList[0].postContent}}"
+                    th:title="' ' + ${programPostList[0].postContent}">
+                  </a>
+                </h3>
+                <p>
+                  Trong bài viết này chúng ta sẽ tìm hiểu về cách chuyển đổi chữ in hoa thành chữ thường trong Java ...
+                </p>
+              </div>
+            </div>
 
-	</div>
+            <div class="older-articles">
+              <div th:each="post : ${programPostList}" class="article" th:if="${postStat.index} != 0">
+                <a th:href="@{'/' + ${post.postContent}}" th:title="' ' + ${post.postContent}">
+                  <img th:src="@{'/image/' + ${post.image}}" th:alt="${post.tittle}">
+                </a>
+                <div class="detail">
+                  <a th:text="${post.tittle}" class="post-title" th:href="@{'/' + ${post.postContent}}"
+                    th:title="' ' + ${post.postContent}">
+                  </a>
+                </div>
+              </div>
 
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="box">
+          <header class="box-header">
+            <h2>Web miễn phí</h2>
+          </header>
+
+          <div class="box-content">
+            <div class="newest-post">
+              <div class="news-image">
+                <a th:href="@{'/' + ${webPostList[0].postContent}}" th:title="' ' + ${webPostList[0].postContent}">
+                  <img th:src="@{'/image/' + ${webPostList[0].image}}" th:alt="${webPostList[0].tittle}" width="284"
+                    height="180">
+                </a>
+              </div>
+              <div class="news-summary">
+                <h3>
+                  <a th:text="${webPostList[0].tittle}" class="post-title"
+                    th:href="@{'/' + ${webPostList[0].postContent}}" th:title="' ' + ${webPostList[0].postContent}">
+                  </a>
+                </h3>
+                <p>
+                  Trong bài viết này mình sẽ hướng dẫn các bạn cách thiết kế giao diện bình luận bằng mã CSS trên
+                  [Blogspot]
+                </p>
+              </div>
+            </div>
+
+            <div class="older-articles">
+              <div th:each="post : ${webPostList}" class="article" th:if="${postStat.index} != 0">
+                <a th:href="@{'/' + ${post.postContent}}" th:title="' ' + ${post.postContent}">
+                  <img th:src="@{'/image/' + ${post.image}}" th:alt="${post.tittle}">
+                </a>
+                <div class="detail">
+                  <a th:text="${post.tittle}" class="post-title" th:href="@{'/' + ${post.postContent}}"
+                    th:title="' ' + ${post.postContent}">
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="box-view-more">
+            <a th:href="@{/web-mien-phi}" title="Web miễn phí">
+              Xem thêm
+              <i class="fas fa-long-arrow-alt-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="box">
+          <header class="box-header">
+            <h2>QUẢN TRỊ WEB</h2>
+          </header>
+
+          <div class="box-content">
+            <div class="newest-post">
+              <div class="news-image">
+                <a th:href="@{'/' + ${webmastersPostList[0].postContent}}"
+                  th:title="' ' + ${webmastersPostList[0].postContent}">
+                  <img th:src="@{'/image/' + ${webmastersPostList[0].image}}" th:alt="${webmastersPostList[0].tittle}"
+                    width="284" height="180">
+                </a>
+              </div>
+              <div class="news-summary">
+                <h3>
+                  <a th:text="${webmastersPostList[0].tittle}" class="post-title"
+                    th:href="@{'/' + ${webmastersPostList[0].postContent}}"
+                    th:title="' ' + ${webmastersPostList[0].postContent}">
+                  </a>
+                </h3>
+                <p>
+                  Trước tiên bạn cần tìm hiểu một chút về khái niệm Regular Expression trong Linux là gì đã nhé ...
+                </p>
+              </div>
+            </div>
+
+            <div class="older-articles">
+              <div th:each="post : ${webmastersPostList}" class="article" th:if="${postStat.index} != 0">
+                <a th:href="@{'/' + ${post.postContent}}" th:title="' ' + ${post.postContent}">
+                  <img th:src="@{'/image/' + ${post.image}}" th:alt="${post.tittle}">
+                </a>
+                <div class="detail">
+                  <a th:text="${post.tittle}" class="post-title" th:href="@{'/' + ${post.postContent}}"
+                    th:title="' ' + ${post.postContent}">
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="box-view-more">
+            <a th:href="@{/webmaster}" title="QUẢN TRỊ WEB">
+              Xem thêm
+              <i class="fas fa-long-arrow-alt-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="box">
+          <header class="box-header">
+            <h2>TIN HỌC</h2>
+          </header>
+
+          <div class="box-content">
+            <div class="newest-post">
+              <div class="news-image">
+                <a th:href="@{'/' + ${informaticsPostList[0].postContent}}"
+                  th:title="' ' + ${informaticsPostList[0].postContent}">
+                  <img th:src="@{'/image/' + ${informaticsPostList[0].image}}" th:alt="${informaticsPostList[0].tittle}"
+                    width="284" height="180">
+                </a>
+              </div>
+              <div class="news-summary">
+                <h3>
+                  <a th:text="${informaticsPostList[0].tittle}" class="post-title"
+                    th:href="@{'/' + ${informaticsPostList[0].postContent}}"
+                    th:title="' ' + ${informaticsPostList[0].postContent}">
+                  </a>
+                </h3>
+                <p>
+                  Hãy lướt xem qua hình ảnh của chúng, nếu thích bạn có thể tải miễn phí bất kỳ Pattern nào trong danh
+                  sách rồi cài nó vào Photoshop.
+                </p>
+              </div>
+            </div>
+
+            <div class="older-articles">
+              <div th:each="post : ${informaticsPostList}" class="article" th:if="${postStat.index} != 0">
+                <a th:href="@{'/' + ${post.postContent}}" th:title="' ' + ${post.postContent}">
+                  <img th:src="@{'/image/' + ${post.image}}" th:alt="${post.tittle}">
+                </a>
+                <div class="detail">
+                  <a th:text="${post.tittle}" class="post-title" th:href="@{'/' + ${post.postContent}}"
+                    th:title="' ' + ${post.postContent}">
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="box-view-more">
+            <a th:href="@{/tin-hoc}" title="TIN HỌC">
+              Xem thêm
+              <i class="fas fa-long-arrow-alt-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="box">
+          <header class="box-header">
+            <h2>THỦ THUẬT</h2>
+          </header>
+
+          <div class="box-content">
+            <div class="newest-post">
+              <div class="news-image">
+                <a th:href="@{'/' + ${tipsPostList[0].postContent}}" th:title="' ' + ${tipsPostList[0].postContent}">
+                  <img th:src="@{'/image/' + ${tipsPostList[0].image}}" th:alt="${tipsPostList[0].tittle}" width="284"
+                    height="180">
+                </a>
+              </div>
+              <div class="news-summary">
+                <h3>
+                  <a th:text="${tipsPostList[0].tittle}" class="post-title"
+                    th:href="@{'/' + ${tipsPostList[0].postContent}}" th:title="' ' + ${tipsPostList[0].postContent}">
+                  </a>
+                </h3>
+                <p>
+                  Trong bài viết này mình sẽ giới thiệu tới bạn đọc 20 phần mềm thiết kế đồ họa tốt nhất năm 2021.
+                </p>
+              </div>
+            </div>
+
+            <div class="older-articles">
+              <div th:each="post : ${tipsPostList}" class="article" th:if="${postStat.index} != 0">
+                <a th:href="@{'/' + ${post.postContent}}" th:title="' ' + ${post.postContent}">
+                  <img th:src="@{'/image/' + ${post.image}}" th:alt="${post.tittle}">
+                </a>
+                <div class="detail">
+                  <a th:text="${post.tittle}" class="post-title" th:href="@{'/' + ${post.postContent}}"
+                    th:title="' ' + ${post.postContent}">
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="box-view-more">
+            <a th:href="@{/thu-thuat}" title="THỦ THUẬT">
+              Xem thêm
+              <i class="fas fa-long-arrow-alt-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="box">
+          <header class="box-header">
+            <h2>DOWNLOAD</h2>
+          </header>
+
+          <div class="box-content">
+            <div class="newest-post">
+              <div class="news-image">
+                <a th:href="@{'/' + ${downloadPostList[0].postContent}}"
+                  th:title="' ' + ${downloadPostList[0].postContent}">
+                  <img th:src="@{'/image/' + ${downloadPostList[0].image}}" th:alt="${downloadPostList[0].tittle}"
+                    width="284" height="180">
+                </a>
+              </div>
+              <div class="news-summary">
+                <h3>
+                  <a th:text="${downloadPostList[0].tittle}" class="post-title"
+                    th:href="@{'/' + ${downloadPostList[0].postContent}}"
+                    th:title="' ' + ${downloadPostList[0].postContent}">
+                  </a>
+                </h3>
+                <p>
+                  Bạn đang tìm một phần mềm hỗ trợ trong quá trình học quản trị mạng của mình ...
+                </p>
+              </div>
+            </div>
+
+            <div class="older-articles">
+              <div th:each="post : ${downloadPostList}" class="article" th:if="${postStat.index} != 0">
+                <a th:href="@{'/' + ${post.postContent}}" th:title="' ' + ${post.postContent}">
+                  <img th:src="@{'/image/' + ${post.image}}" th:alt="${post.tittle}">
+                </a>
+                <div class="detail">
+                  <a th:text="${post.tittle}" class="post-title" th:href="@{'/' + ${post.postContent}}"
+                    th:title="' ' + ${post.postContent}">
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="box-view-more">
+            <a th:href="@{/tai-ve}" title="DOWNLOAD">
+              Xem thêm
+              <i class="fas fa-long-arrow-alt-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="box">
+          <header class="box-header">
+            <h2>MARKETING</h2>
+          </header>
+
+          <div class="box-content">
+            <div class="newest-post">
+              <div class="news-image">
+                <a th:href="@{'/' + ${marketingPostList[0].postContent}}"
+                  th:title="' ' + ${marketingPostList[0].postContent}">
+                  <img th:src="@{'/image/' + ${marketingPostList[0].image}}" th:alt="${marketingPostList[0].tittle}"
+                    width="284" height="180">
+                </a>
+              </div>
+              <div class="news-summary">
+                <h3>
+                  <a th:text="${marketingPostList[0].tittle}" class="post-title"
+                    th:href="@{'/' + ${marketingPostList[0].postContent}}"
+                    th:title="' ' + ${marketingPostList[0].postContent}">
+                  </a>
+                </h3>
+                <p>
+                  Theo sự phát triển của thế giới công nghệ, các chuyên gia đã nhận định rằng tương lai của marketing sẽ
+                  gắn liền với kỹ thuật số (digital). Đây là…
+                </p>
+              </div>
+            </div>
+
+            <div class="older-articles">
+              <div th:each="post : ${marketingPostList}" class="article" th:if="${postStat.index} != 0">
+                <a th:href="@{'/' + ${post.postContent}}" th:title="' ' + ${post.postContent}">
+                  <img th:src="@{'/image/' + ${post.image}}" th:alt="${post.tittle}">
+                </a>
+                <div class="detail">
+                  <a th:text="${post.tittle}" class="post-title" th:href="@{'/' + ${post.postContent}}"
+                    th:title="' ' + ${post.postContent}">
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="box-view-more">
+            <a th:href="@{/marketing}" title="MARKETING">
+              Xem thêm
+              <i class="fas fa-long-arrow-alt-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="box">
+          <header class="box-header">
+            <h2>KHÁM PHÁ</h2>
+          </header>
+
+          <div class="box-content">
+            <div class="newest-post">
+              <div class="news-image">
+                <a th:href="@{'/' + ${discoverPostList[0].postContent}}"
+                  th:title="' ' + ${discoverPostList[0].postContent}">
+                  <img th:src="@{'/image/' + ${discoverPostList[0].image}}" th:alt="${discoverPostList[0].tittle}"
+                    width="284" height="180">
+                </a>
+              </div>
+              <div class="news-summary">
+                <h3>
+                  <a th:text="${discoverPostList[0].tittle}" class="post-title"
+                    th:href="@{'/' + ${discoverPostList[0].postContent}}"
+                    th:title="' ' + ${discoverPostList[0].postContent}">
+                  </a>
+                </h3>
+                <p>
+                  Đây là bài hát rất hay, được ca sỹ thể hiện trong đúng thời điểm lũ lụt lịch sử ở miền trung, được
+                  nhiều ...
+                </p>
+              </div>
+            </div>
+
+            <div class="older-articles">
+              <div th:each="post : ${discoverPostList}" class="article" th:if="${postStat.index} != 0">
+                <a th:href="@{'/' + ${post.postContent}}" th:title="' ' + ${post.postContent}">
+                  <img th:src="@{'/image/' + ${post.image}}" th:alt="${post.tittle}">
+                </a>
+                <div class="detail">
+                  <a th:text="${post.tittle}" class="post-title" th:href="@{'/' + ${post.postContent}}"
+                    th:title="' ' + ${post.postContent}">
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="box-view-more">
+            <a th:href="@{/kham-pha}" title="KHÁM PHÁ">
+              Xem thêm
+              <i class="fas fa-long-arrow-alt-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="box">
+          <header class="box-header">
+            <h2>MÔN HỌC</h2>
+          </header>
+
+          <div class="box-content">
+            <div class="newest-post">
+              <div class="news-image">
+                <a th:href="@{'/' + ${studyPostList[0].postContent}}" th:title="' ' + ${studyPostList[0].postContent}">
+                  <img th:src="@{'/image/' + ${studyPostList[0].image}}" th:alt="${studyPostList[0].tittle}" width="284"
+                    height="180">
+                </a>
+              </div>
+              <div class="news-summary">
+                <h3>
+                  <a th:text="${studyPostList[0].tittle}" class="post-title"
+                    th:href="@{'/' + ${studyPostList[0].postContent}}" th:title="' ' + ${studyPostList[0].postContent}">
+                  </a>
+                </h3>
+                <p>
+                  Nói với con là một bài thơ tiêu biểu của tác giả Y Phương nói về tình yêu thắm thiết đối với nguồn ...
+                </p>
+              </div>
+            </div>
+
+            <div class="older-articles">
+              <div th:each="post : ${studyPostList}" class="article" th:if="${postStat.index} != 0">
+                <a th:href="@{'/' + ${post.postContent}}" th:title="' ' + ${post.postContent}">
+                  <img th:src="@{'/image/' + ${post.image}}" th:alt="${post.tittle}">
+                </a>
+                <div class="detail">
+                  <a th:text="${post.tittle}" class="post-title" th:href="@{'/' + ${post.postContent}}"
+                    th:title="' ' + ${post.postContent}">
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="box-view-more">
+            <a th:href="@{/mon-hoc}" title="MÔN HỌC">
+              Xem thêm
+              <i class="fas fa-long-arrow-alt-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="side-panel">
+
+        <div th:replace="fragments :: top-side-panel" />
+
+        <div class="side-box">
+
+          <header class="box-header">
+            <h3>Review khóa học</h3>
+          </header>
+
+          <div class="side-box-list-container">
+
+            <div th:each="post : ${coursePostList}" class="side-box-list-item">
+              <a th:href="@{'/' + ${post.postContent}}" th:title="' ' + ${post.postContent}">
+                <img th:src="@{'/image/' + ${post.image}}" th:alt="${post.tittle}" width="90" height="60">
+              </a>
+              <a th:text="${post.tittle}" class="post-title" th:href="@{'/' + ${post.postContent}}"
+                th:title="${post.tittle}">
+              </a>
+            </div>
+
+            <div class="side-box-list-item" style="text-align: Right; display: block;">
+              <a th:href="@{/khoa-hoc}" title="khóa học">Xem tất cả</a>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="side-box">
+
+          <header class="box-header">
+            <h3>Bài tập</h3>
+          </header>
+
+          <div class="side-box-scrolling-container">
+            <div th:each="post : ${exercisePostList}" class="side-box-scrolling-item">
+              <a th:text="${post.tittle}" class="post-title" style="margin-left: 0px"
+                th:href="@{'/' + ${post.postContent}}" th:title="${post.tittle}"></a>
+            </div>
+          </div>
+
+        </div>
+
+        <div th:replace="fragments :: fix-side-panel" th:with="couponList=${couponList}" />
+      </div>
+    </div>
+  </div>
+  <div th:include="fragments :: footer" />
 </body>
 
 </html>

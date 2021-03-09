@@ -1,114 +1,80 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="vi-VN">
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" href="styles.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script th:src="@{/js/ajax/orderService.js}" charset="utf-8"></script>
-	<title>Giới thiệu</title>
-</head>
+<head th:include="fragments :: head" th:with="title='Bảng giá đăng bài viết quảng cáo, guest post, text link'" />
+
 
 <body id="page">
-	<div class="boxed-content-wrapper">
-		<div class="boxed-content-wrapper">
-			<div class="inner"></div>
-			<div class="inner" style="margin-top: 20px;">
-				<div class="main_container">
-					<div class="main-col" id="main_container">
-						<div class="base-box" itemscope="" itemtype="http://schema.org/Article"
-							style="margin-bottom: 0px">
-							<h1 id="main_title" class="post-tile entry-title" itemprop="headline">Giới thiệu</h1>
-							<span id="element_action" data-id="8" data-uri="https://freetuts.net/ajax/view/page"></span>
-							<div class="mom-post-meta single-post-meta">
-								<span class="author vcard">Đăng bởi: Administrator </span> <span>
-									- Vào ngày: <time datetime="2016-07-21T01:50:21+07:00" itemprop="datePublished"
-										class="updated">21-07-2016</time>
-								</span>
-							</div>
+	<div th:include="fragments :: navigation-bar" />
+	<div class="body-container">
+		<div class="main-panel">
+			<div class="outer">
+				<div class="box-content">
+					<div class="inner" style="margin-top: 20px;">
+						<div class="main_container">
+							<div class="main-col" id="main_container">
+								<div class="base-box" itemscope="" itemtype="http://schema.org/Article"
+									style="margin-bottom: 0px">
+									<h1 id="main_title" class="post-tile entry-title" itemprop="headline">Giới thiệu
+									</h1>
+									<span id="element_action" data-id="8"
+										data-uri="https://freetuts.net/ajax/view/page"></span>
+									<div class="mom-post-meta single-post-meta">
+										<span class="author vcard">Đăng bởi: Administrator </span> <span>
+											- Vào ngày: <time datetime="2016-07-21T01:50:21+07:00"
+												itemprop="datePublished" class="updated">21-07-2016</time>
+										</span>
+									</div>
 
-							<div class="entry-content">
-								<p>Freetuts.net là một mã giảm giá, tại đây sẽ tổng hợp các
-									tin tức giảm giá về Domain, Hosting và các khóa học lập trình
-									của các trung tâm dạy học online. Rất mong các bạn sẽ mua sản
-									phẩm thông qua link giới thiệu của freetuts.</p>
+									<div class="entry-content">
+										<p>Freetuts.net là một mã giảm giá, tại đây sẽ tổng hợp các
+											tin tức giảm giá về Domain, Hosting và các khóa học lập trình
+											của các trung tâm dạy học online. Rất mong các bạn sẽ mua sản
+											phẩm thông qua link giới thiệu của freetuts.</p>
 
-								<h2>Mạng xã hội</h2>
+										<h2>Mạng xã hội</h2>
 
-								<p>Theo quy định của nhà nước Việt Nam,&nbsp;muốn thành lập
-									forum thì&nbsp;cần phải có giấy phép đăng ký, vì vậy freetuts
-									không thể tạo sân chơi này cho các bạn được. Tuy nhiên, hiện
-									nay đa số ban nào cũng có tài khoản Facebook nên freetuts sẽ
-									lấy Facebook làm nơi thảo luận và&nbsp;trao đổi kiến thức.</p>
+										<p>Theo quy định của nhà nước Việt Nam,&nbsp;muốn thành lập
+											forum thì&nbsp;cần phải có giấy phép đăng ký, vì vậy freetuts
+											không thể tạo sân chơi này cho các bạn được. Tuy nhiên, hiện
+											nay đa số ban nào cũng có tài khoản Facebook nên freetuts sẽ
+											lấy Facebook làm nơi thảo luận và&nbsp;trao đổi kiến thức.</p>
 
-								<ul>
-									<li><a href="https://www.facebook.com/groups/freetutsdotnet/">Group thảo
-											luận</a></li>
-									<li><a href="https://www.facebook.com/freetuts/">Fanpage</a>
-									</li>
-								</ul>
+										<ul>
+											<li><a href="https://www.facebook.com/groups/freetutsdotnet/">Group thảo
+													luận</a></li>
+											<li><a href="https://www.facebook.com/freetuts/">Fanpage</a>
+											</li>
+										</ul>
 
-								<p>Ngoài ra blog còn có một kênh youtube để đăng các video
-									dạy học miễn phí:</p>
+										<p>Ngoài ra blog còn có một kênh youtube để đăng các video
+											dạy học miễn phí:</p>
 
-								<ul>
-									<li><a href="https://www.youtube.com/c/FreetutsNetVideo">Freetuts
-											Video</a></li>
-								</ul>
+										<ul>
+											<li><a href="https://www.youtube.com/c/FreetutsNetVideo">Freetuts
+													Video</a></li>
+										</ul>
 
-								<h2>Mong muốn</h2>
+										<h2>Mong muốn</h2>
 
-								<p>Vì một cộng đồng IT Việt Nam phát triển thì mình rất
-									mong muốn nhận được sự ủng hộ của các bạn lập trình viên, admin
-									của các blog khác. Chúng ta không nên ganh ghét lẫn nhau mã hãy
-									giúp đỡ lẫn nhau, cùng nhau phát triển hơn nữa.</p>
-							</div>
-						</div>
-					</div>
-					<div class="clear"></div>
-				</div>
-
-				<div class="sidebar main-sidebar" id="right_sidebar" style="position: relative">
-					<div id="f_right_sidebar">
-						<div class="widget " style="border: none">
-							<div class="mom-posts-widget" style="padding: 0px">
-								<table style="margin-bottom: 0px">
-									<tr>
-										<td colspan="3"
-											style="background: #2f6e91; color: #fff; text-align: center; font-weight: bold; font-size: 14px; padding: 2px 10px">
-											MÃ GIẢM GIÁ</td>
-									</tr>
-									<tr style="font-size: 14px !important">
-										<td>Unica</td>
-										<td>50%</td>
-										<td><a href="https://unica.vn/?aff=2560&src=ft.sidebar.coupon" class="coupon"
-												rel="nofollow" title="freetuts50"
-												style="margin-bottom: 0px; border-radius: 20px;" target="_blank">Lấy
-												Mã</a></td>
-									</tr>
-									<tr style="font-size: 14px !important">
-										<td>TinoHost</td>
-										<td>30%</td>
-										<td><a href="https://tinohost.com/?php=213" class="coupon" rel="nofollow"
-												title="TINO30_2020" style="margin-bottom: 0px; border-radius: 20px;"
-												target="_blank">Lấy Mã</a></td>
-									</tr>
-									<tr style="font-size: 14px !important">
-										<td>INET</td>
-										<td>30%</td>
-										<td><a href="https://freetuts.net/recommended/inet" class="coupon"
-												rel="nofollow" title="INET30UP"
-												style="margin-bottom: 0px; border-radius: 20px;">Lấy Mã</a>
-										</td>
-									</tr>
-								</table>
+										<p>Vì một cộng đồng IT Việt Nam phát triển thì mình rất
+											mong muốn nhận được sự ủng hộ của các bạn lập trình viên, admin
+											của các blog khác. Chúng ta không nên ganh ghét lẫn nhau mã hãy
+											giúp đỡ lẫn nhau, cùng nhau phát triển hơn nữa.</p>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<div class="side-panel">
+			<div th:replace="fragments :: top-side-panel" />
+			<div th:replace="fragments :: fix-side-panel" th:with="couponList=${couponList}" />
+		</div>
 	</div>
+	<div th:include="fragments :: footer" />
 </body>
 
 </html>

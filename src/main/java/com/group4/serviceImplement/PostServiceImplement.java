@@ -21,8 +21,8 @@ public class PostServiceImplement implements PostService{
 	}
 
 	@Override
-	public List<Post> findTop7ByCategoryIdInOrderByPostIdDesc(List<Integer> categoryID) {
-		return postRepo.findTop7ByCategoryIdInOrderByPostIdDesc(categoryID);
+	public List<Post> findTop20ByCategoryIdInOrderByPostIdDesc(List<Integer> categoryID) {
+		return postRepo.findTop20ByCategoryIdInOrderByPostIdDesc(categoryID);
 	}
 
 	@Override
