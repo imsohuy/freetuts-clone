@@ -20,6 +20,9 @@ public class Discount {
 	
 	@Column(name = "percentage")
 	private Integer percentage;
+	
+	@Column(name = "discount_link_page")
+	private String discountLinkPage;
 
 	public Integer getDiscountId() {
 		return discountId;
@@ -52,4 +55,13 @@ public class Discount {
 	public void setPercentage(Integer percentage) {
 		this.percentage = percentage;
 	}
+
+	public String getDiscountLinkPage() {
+		return discountLinkPage;
+	}
+
+	public void setDiscountLinkPage(String discountLinkPage) {
+		this.discountLinkPage = discountLinkPage;
+	}
+
 }

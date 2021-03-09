@@ -9,9 +9,7 @@ import com.group4.entity.Post;
 public interface PostRepository extends CrudRepository<Post, Integer>{
 	List<Post> findTop5TittleByCategoryIdInOrderByPostIdDesc(List<Integer> categoryID);
 	
-	List<Post> findTop7ByCategoryIdInOrderByPostIdDesc(List<Integer> categoryID);
+	List<Post> findTop20ByCategoryIdInOrderByPostIdDesc(List<Integer> categoryID);
 	
 	List<Post> findTop12ByCategoryIdInOrderByPostIdDesc(List<Integer> categoryID);
-
-	Post findByPostContent(String postContent);
 }
