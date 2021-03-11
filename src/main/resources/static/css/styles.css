@@ -28,6 +28,7 @@ a:hover {
     margin: 0 auto;
     height: 100%;
     display: flex;
+    margin-top: 40px;
 }
 
 .main-panel {
@@ -347,4 +348,40 @@ h1 {
     padding-bottom: 5px;
     font-size: 22px;
     color: #315062;
+}
+
+#page-title {
+    font-size: 24px;
+    font-weight: 700;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 20px;
+    padding-top: 5px;
+}
+
+input {
+    height: 40px;
+    padding: 0 8px;
+    background: #f8f8f8;
+    border: 1px solid #eaeaea;
+    margin-bottom: 20px;
+    width: 100%;
+    border-radius: 0;
+    box-sizing: border-box;
+    color: #222;
+    line-height: normal;
+    font-size: 100%;
+    margin: 0;
+}
+
+input[type=submit] {
+    display: inline-block;
+    padding: 0 17px;
+    line-height: 36px;
+    border: 0 solid;
+    background: #4a525d;
+    color: #fff;
+    font-weight: 400;
+    width: auto;
+    margin-left: 20px;
 }
