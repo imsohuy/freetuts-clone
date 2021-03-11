@@ -5,18 +5,7 @@
 
 <head>
 	<!-- Script for rich-text editor -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
-	<script>
-		tinymce.init({
-			selector: 'textarea#editor',
-			skin: 'bootstrap',
-			plugins: 'lists, link',
-			toolbar: 'bold italic | bullist numlist',
-			menubar: false
-		});
-	</script>
+	<script src="ckeditor/ckeditor.js"></script>
 </head>
 
 <body id="page">
@@ -25,11 +14,11 @@
 		<div class="main-panel">
 			<div class="outer">
 				<div class="box-content">
-					<div class="inner" style="margin-top: 20px;">
+					<div class="inner">
 						<div class="main_container">
 							<div class="main-col" id="main_container">
 								<div class="base-box" itemscope="" style="margin-bottom: 0px">
-									<h1 id="main_title" class="post-tile entry-title" itemprop="headline">Liên hệ</h1>
+									<h1 id="page-title" class="post-tile entry-title" itemprop="headline">Liên hệ</h1>
 									<span id="element_action" data-id="8"
 										data-uri="https://freetuts.net/ajax/view/page"></span>
 
@@ -40,35 +29,46 @@
 										</p>
 
 										<p>
-											<label>Tiêu đề</label><br>
+											<label style="font-weight: bold">Tiêu đề</label><br>
 											<input required="true" type="text" placeholder="Tiêu đê (required)">
 										</p>
 
 										<p>
-											<label>Tên của bạn</label><br>
+											<label style="font-weight: bold">Tên của bạn</label><br>
 											<input required="true" type="text" placeholder="Tên của bạn (required)">
 										</p>
 
 										<p>
-											<label>Email của bạn</label><br>
+											<label style="font-weight: bold">Email của bạn</label><br>
 											<input required="true" type="text" placeholder="Email của bạn (required)">
 										</p>
 										<p>
-											<label>Địa chỉ của bạn</label><br>
+											<label style="font-weight: bold">Địa chỉ của bạn</label><br>
 											<input required="true" type="text" placeholder="Địa chỉ của bạn">
 										</p>
 
 										<p>
-											<label>Điện thoại của bạn</label><br>
+											<label style="font-weight: bold">Điện thoại của bạn</label><br>
 											<input type="text" placeholder="Điện thoại của bạn">
 										</p>
 
 										<p>
-											<label>Địa chỉ của bạn</label><br>
+											<label style="font-weight: bold">Địa chỉ của bạn</label><br>
 											<!--Text editor-->
 											<div class="form-group">
-												<textarea id="editor"></textarea>
+												<form>
+													<textarea name="editor1" id="editor1" rows="10"
+														cols="80"></textarea>
+													<script>
+														CKEDITOR.replace('editor1');
+													</script>
+												</form>
 											</div>
+										</p>
+										<p>
+											<input style="margin-left: 20px" type="submit" value="Gửi liên hệ"
+												id="send_message">
+										</p>
 									</div>
 								</div>
 							</div>
