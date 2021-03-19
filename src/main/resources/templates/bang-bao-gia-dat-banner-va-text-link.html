@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments :: head" th:with="title='Bảng giá đăng bài viết quảng cáo, guest post, text link'" />
+
+<body id="page">
+    <div th:include="fragments :: navigation-bar" />
+    <div class="body-container">
+        <div class="main-panel">
+            <div class="main-col">
+                <h1 class="post-tile">Bảng giá đăng bài viết quảng cáo, guest post, text link</h1>
+                <div class="mom-post-meta single-post-meta">
+                    <span>Đăng bởi: TheHalfHeart </span> <span>
+                        - Vào ngày: <time datetime="2016-07-21T01:50:21+07:00">15-08-2016</time>
+                    </span>
+                </div>
+                <div class="content">
+                    <p>
+                        Sau hơn 6 năm phát triển, hiện nay freetuts đã trở thành một blog chia sẻ
+                        kiến thức lập trình miễn phí rất có tiếng tại Việt Nam, hầu như các bạn sinh
+                        viên đều biết đến blog và đã có những cảm nhận hướng tích cực. Và để có thêm
+                        kinh phí duy trì, cũng như là trả nhuận bút cho các tác giả
+                        thì mình mở dịch vụ <b>đăng bài viết quảng cáo, guest post lên freetuts.</b>
+                    </p>
+                    <h2>1. Giá bài quảng cáo</h2>
+                    <ul>
+                        <li>
+                            Giá bài mới: <b>1.000.000đ.</b>
+                        </li>
+                        <li>
+                            Link là nofollow, nếu bạn muốn link dofollow thì mua Guest Post
+                        </li>
+                        <li>
+                            Bài viết sẽ hiển thị trang chủ 10 ngày, sau đó trôi theo thời gian đăng bài
+                        </li>
+                        <li>
+                            Giá up top: 500.000đ, bài viết sẽ được up top bài lên trang chủ 10 ngày,
+                            sau trôi theo thời gian đăng bài (tính theo thời gian up top, không sửa
+                            nội dung)
+                        </li>
+                    </ul>
+                    <h2>2. Giá bài guest post</h2>
+                    <ul>
+                        <li>Đăng bài mới: <b>1.200.000đ</b>, chưa tính phí content.</li>
+                        <li>
+                            Content 2 link do, vĩnh viễn, trường hợp site của bạn chết thì chúng tôi
+                            sẽ gỡ link.
+                        </li>
+                        <li>Chỉ chấp nhận chủ đề công nghệ.</li>
+                        <li>
+                            Đối với chủ đề khác thì liên hệ trực tiếp mình qua Skype
+                            <b>thehalfheart</b> hoặc Zalo <b>0979306603</b> để lấy báo giá.
+                        </li>
+                    </ul>
+                    <h2>3. Giá text link</h2>
+                    <ul>
+                        <li>
+                            Đặt trên bài có sẵn vĩnh viễn: <b> 3.500.000đ</b>, yêu cầu anchor text
+                            <b> không được lấy key chính</b> của bài.
+                        </li>
+                        <li>
+                            Đặt trên footer trang chủ: <b>300.000đ / tháng</b>
+                        </li>
+                    </ul>
+                    <h2>Mọi thông tin xin liên hệ:</h2>
+                    <ul>
+                        <li>Skype: thehalfheart</li>
+                        <li>Zalo: 0979306603</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="side-panel">
+            <div th:replace="fragments :: top-side-panel" />
+            <div th:replace="fragments :: fix-side-panel" th:with="couponList=${couponList}" />
+        </div>
+    </div>
+    <div th:include="fragments :: footer" />
+</body>
+
+</html>

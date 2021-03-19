@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments :: head" th:with="title='Create category'" />
+
+<body>
+  <div th:include="fragments :: admin-navigation-bar" />
+  <div style="min-height: 500px;" class="body">
+    <div class="body-container">
+      <form id="content-form" method="post" enctype="multipart/form-data">
+        <div class="text-input-container">
+          <input class="form-input" type="text" name="txtCategoryName" value="" placeholder="Category name" /><br />
+          <label for="txtCategoryName" generated="true" class="error"></label><br/>
+
+          <input class="form-input" type="text" name="txtPath" value="" placeholder="Post path (example/example...)" /><br />
+          <label for="txtPath" generated="true" class="error"></label><br />
+
+          <input class="chosen-value" type="text" name="txtParentCategory" value="" placeholder="Select parent category">
+          <ul class="value-list">
+            <li th:each="category : ${categoryList}" th:text="${category.categoryName}"></li>
+          </ul>
+          </br/>
+          <label for="txtParentCategory" generated="true" class="error"></label>
+          </br/>
+          <textarea class="editor">
+
+          </textarea>
+
+          <button class="submit" type="submit"><span>Submit</span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script th:src="@{/js/validation/validateCreateCategory.js}"></script>
+  <script th:src="@{/js/ckeditor/ckeditor.js}"></script>
+  <script th:src="@{/js/ajax/create-category.js}"></script>
+  <script th:src="@{/js/selectInput.js}"></script>
+</body>
+
+</html>

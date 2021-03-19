@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments :: head" th:with="title='Bảng giá đăng bài viết quảng cáo, guest post, text link'" />
+
+
+<body id="page">
+	<div th:include="fragments :: navigation-bar" />
+	<div class="body-container">
+		<div class="main-panel">
+			<div class="main-col">
+				<h1 class="post-tile">Giới thiệu</h1>
+				<div class="mom-post-meta single-post-meta">
+					<span>Đăng bởi: Administrator </span>
+					<span>
+						- Vào ngày: <time datetime="2016-07-21T01:50:21+07:00">21-07-2016</time>
+					</span>
+				</div>
+
+				<div class="content">
+					<p>Freetuts.net là một mã giảm giá, tại đây sẽ tổng hợp các
+						tin tức giảm giá về Domain, Hosting và các khóa học lập trình
+						của các trung tâm dạy học online. Rất mong các bạn sẽ mua sản
+						phẩm thông qua link giới thiệu của freetuts.</p>
+
+					<h2>Mạng xã hội</h2>
+
+					<p>Theo quy định của nhà nước Việt Nam,&nbsp;muốn thành lập
+						forum thì&nbsp;cần phải có giấy phép đăng ký, vì vậy freetuts
+						không thể tạo sân chơi này cho các bạn được. Tuy nhiên, hiện
+						nay đa số ban nào cũng có tài khoản Facebook nên freetuts sẽ
+						lấy Facebook làm nơi thảo luận và&nbsp;trao đổi kiến thức.</p>
+
+					<ul>
+						<li><a href="https://www.facebook.com/groups/freetutsdotnet/">Group thảo
+								luận</a></li>
+						<li><a href="https://www.facebook.com/freetuts/">Fanpage</a>
+						</li>
+					</ul>
+
+					<p>Ngoài ra blog còn có một kênh youtube để đăng các video
+						dạy học miễn phí:</p>
+
+					<ul>
+						<li><a href="https://www.youtube.com/c/FreetutsNetVideo">Freetuts
+								Video</a></li>
+					</ul>
+
+					<h2>Mong muốn</h2>
+
+					<p>Vì một cộng đồng IT Việt Nam phát triển thì mình rất
+						mong muốn nhận được sự ủng hộ của các bạn lập trình viên, admin
+						của các blog khác. Chúng ta không nên ganh ghét lẫn nhau mã hãy
+						giúp đỡ lẫn nhau, cùng nhau phát triển hơn nữa.</p>
+				</div>
+			</div>
+		</div>
+		<div class="side-panel">
+			<div th:replace="fragments :: top-side-panel" />
+			<div th:replace="fragments :: fix-side-panel" th:with="couponList=${couponList}" />
+		</div>
+	</div>
+	<div th:include="fragments :: footer" />
+</body>
+
+</html>

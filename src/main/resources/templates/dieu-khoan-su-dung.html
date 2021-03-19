@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments :: head" th:with="title='Điều khoản sử dụng'" />
+
+<body id="page">
+	<div th:include="fragments :: navigation-bar" />
+	<div class="body-container">
+		<div class="main-panel">
+			<div class="main-col">
+				<!--Tieu de-->
+				<h1 class="post-tile">Điều khoản sử dụng </h1>
+				<!--Time - author -->
+				<div class="mom-post-meta single-post-meta">
+					<span>Đăng bởi: Administrator </span> <span>
+						- Vào ngày: <time datetime="2016-07-21T01:50:21+07:00">29-10-2019</time>
+					</span>
+				</div>
+				<!--Content-->
+				<div class="content">
+					<p>
+						Để thuận tiện trong việc duy trì website thì rất mong quý độc giả tuân thủ
+						theo những quy tắc mà freetuts đặt ra dưới đây.
+					</p>
+					<h2>Bình luận khiếm nhã và lịch sự</h2>
+					<p>
+						Hãy là một người có văn hóa, bình luận một cách lịch sự và tôn trọng mọi
+						người. Tất cả những bình luận sẽ được public ngay lập tức, nhưng admin
+						sẽ luôn theo dõi và xóa những bình luận vô văn hóa.
+					</p>
+					<h2>Chia sẻ bài viết hay</h2>
+					<p>
+						Nếu bạn cảm thấy bài viết trên freetuts hay và hữu ích thì hãy giúp mình chia
+						sẻ nó đến với mọi người nhiều hơn nữa. Việc làm này sẽ giúp khích lệ các tác
+						giả và họ sẽ chia sẻ ngày nhiều hơn.
+					</p>
+					<h2>Không copy bài </h2>
+					<p>
+						Các bài viết được tác giả tự biên soạn, tổng hợp lại nên có thể được xem là
+						tự biên soạn. Vì vậy mọi hành động copy bài mà không xin phép sẽ được xem là
+						vô văn hóa. Đối với hình ảnh thì chúng tôi có copy trên internet vì đó là kho
+						tài nguyên miễn phí, vì vậy nếu có vi phạm bản quyền thì hãy report cho admin nhé.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="side-panel">
+			<div th:replace="fragments :: top-side-panel" />
+			<div th:replace="fragments :: fix-side-panel" th:with="couponList=${couponList}" />
+		</div>
+	</div>
+	<div th:include="fragments :: footer" />
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments :: head" th:with="title='Post article'" />
+
+<body>
+  <div th:include="fragments :: admin-navigation-bar"/>
+  <div style="min-height: 500px;" class="body">
+    <div class="body-container">
+      <div class="centered">
+        <div class="row row-editor">
+          <form id="content-form" method="post" enctype="multipart/form-data">
+            <div class="text-input-container">
+              <input type="hidden" name="txtPostID" th:value="${post.postId}" />
+
+              <input class="chosen-value" type="text" name="txtCategory" th:value="${categoryName}" placeholder="Select category">
+              <ul class="value-list">
+                <li th:each="category : ${categoryList}" th:text="${category.categoryName}"></li>
+              </ul>
+              </br/>
+              <label for="txtCategory" generated="true" class="error"></label><br />
+
+              <input class="chosen-value1" type="text" name="txtTemplate" th:value="${templateName}" placeholder="Select template">
+              <ul class="value-list1">
+                <li th:each="template : ${templateList}" th:text="${template.templateName}"></li>
+              </ul>
+              </br/>
+              <label for="txtTemplate" generated="true" class="error"></label><br />
+
+              <input class="form-input" type="text" name="txtTitle" th:value="${post.title}" placeholder="Title" /> <br />
+              <label for="txtTitle" generated="true" class="error"></label><br />
+              <br/>
+
+              <textarea class="form-input" name="txtDescription" rows="8" cols="80" placeholder="Description" th:text="${post.description}"></textarea>
+
+            </div>
+            <textarea class="editor" th:text="${post.postContent}">
+
+            </textarea>
+            <div class="button_outer">
+      				<div class="btn_upload">
+      					<input type="file" id="upload_file" name="fileUp">
+      					Upload Image
+      				</div>
+      				<div class="processing_bar"></div>
+      				<div class="success_box"></div>
+      			</div>
+            <div class="error_msg"></div>
+        		<div class="uploaded_file_view" id="uploaded_view">
+        			<span class="file_remove">X</span>
+        		</div>
+            <script th:src="@{/js/uploadImg.js}"></script>
+            <br/>
+
+            <input th:if="${post.status} == true" type="checkbox" id="check" name="Status" value="Status" checked/>
+            <input th:if="${post.status} == false" type="checkbox" id="check" name="Status" value="Status"/>
+            <label for="check">
+              <span><!-- This span is needed to create the "checkbox" element --></span>Status
+            </label>
+            <br/>
+
+            <button class="submit" type="submit"><span>Update</span></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script th:src="@{/js/validation/validateUpdateArticle.js}"></script>
+  <script th:src="@{/js/ckeditor/ckeditor.js}"></script>
+  <script th:src="@{/js/ajax/update-article.js}"></script>
+  <script th:src="@{/js/selectInput.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments :: head" th:with="title='Liên hệ'" />
+
+<body id="page">
+	<div th:include="fragments :: navigation-bar" />
+	<div class="body-container">
+		<div class="main-panel">
+			<h1 id="page-title">Liên hệ</h1>
+			<div class="content">
+				<p>Nếu bạn muốn liên hệ trực tiếp với mình thì có thể inbox qua facebook
+					fb.com/thehalfheart, lưu ý là bạn phải add friends hoặc follow, nếu
+					không tin nhắn vào hộp thư chờ thì mình sẽ không đọc được.
+				</p>
+				<form>
+					<p>
+						<label>Tiêu đề</label><br>
+						<input required="true" type="text" placeholder="Tiêu đê (required)">
+					</p>
+
+					<p>
+						<label>Tên của bạn</label><br>
+						<input required="true" type="text" placeholder="Tên của bạn (required)">
+					</p>
+
+					<p>
+						<label>Email của bạn</label><br>
+						<input required="true" type="text" placeholder="Email của bạn (required)">
+					</p>
+					<p>
+						<label>Địa chỉ của bạn</label><br>
+						<input required="true" type="text" placeholder="Địa chỉ của bạn">
+					</p>
+
+					<p>
+						<label>Điện thoại của bạn</label><br>
+						<input type="text" placeholder="Điện thoại của bạn">
+					</p>
+
+					<p>
+						<label>Địa chỉ của bạn</label><br>
+						<!--Text editor-->
+						<textarea class="editor"></textarea>
+					</p>
+					<p>
+						<input style="margin-left: 20px" type="submit" value="Gửi liên hệ" id="send_message">
+					</p>
+				</form>
+				<script th:src="@{/js/ckeditor/ckeditor.js}"></script>
+				<script th:src="@{/js/ajax/lien-he.js}"></script>
+			</div>
+		</div>
+		<div class="side-panel">
+			<div th:replace="fragments :: top-side-panel" />
+			<div th:replace="fragments :: fix-side-panel" th:with="couponList=${couponList}" />
+		</div>
+	</div>
+	<div th:include="fragments :: footer" />
+</body>
+
+</html>

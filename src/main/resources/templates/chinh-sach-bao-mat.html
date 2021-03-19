@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments :: head" th:with="title='Chính sách bảo mật'" />
+
+<body id="page">
+	<div th:include="fragments :: navigation-bar" />
+	<div class="body-container">
+		<div class="main-panel">
+			<h1 class="post-tile">Chính sách bảo mật</h1>
+			<div class="mom-post-meta single-post-meta">
+				<span>Đăng bởi: Administrator </span>
+				<span>
+					- Vào ngày: <time datetime="2016-07-21T01:50:21+07:00">21-07-2016</time>
+				</span>
+			</div>
+			<div class="content">
+				<p>Thông tin chi tiết về chính sách bảo mật khi sử dụng các dịch vụ có phí và miễn
+					phí tại website. Quý khách vui lòng đọc cẩn thận để sau này không có những khiếu
+					nại đáng tiếc.
+				</p>
+				<h2>1. Có thu thập thông tin cá nhân không?</h2>
+				<p>
+					Với mục đích chia sẻ kiến thức miễn phí, kèm với những dịch vụ có phí nên khi sử
+					dụng dịch vụ đó, hoặc đăng ký theo dõi bản tin website, hoặc bình luận thì bạn sẽ
+					được yêu cầu để lại các thông tin như email, số điện thoại.
+				</p>
+				<h2>2. Thông tin được sử dụng để làm gì?</h2>
+				<p>Tùy vào dịch vụ mà bạn đăng ký. </p>
+				<ul>
+					<li>
+						Nếu comment thì chúng tôi sẽ thông báo cho bạn mỗi khi có bình luận mới.
+					</li>
+					<li>
+						Nếu theo dõi bản tin thì chúng tôi sẽ thông báo mỗi khi có bài mới.
+					</li>
+					<li>
+						Nếu đăng ký dịch vụ trả phí như khóa học thì chúng tôi sẽ do absolutely nothing mtfk :D.
+					</li>
+				</ul>
+				<h2>3. Affiliate link</h2>
+				<p>
+					Blog có trỏ link liên kết affiliate đến một số trang khác, đây là nguồn doanh thu
+					giúp duy trì website. Đương nhiên mình chỉ share những link hữu ích.
+				</p>
+			</div>
+		</div>
+		<div class="side-panel">
+			<div th:replace="fragments :: top-side-panel" />
+			<div th:replace="fragments :: fix-side-panel" th:with="couponList=${couponList}" />
+		</div>
+	</div>
+	<div th:include="fragments :: footer" />
+
+</body>
+
+</html>

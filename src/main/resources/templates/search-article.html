@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments :: head" th:with="title='Search article'" />
+
+<body>
+  <div th:include="fragments :: admin-navigation-bar" />
+  <div style="min-height: 500px;" class="body">
+    <div class="body-container">
+      <form id="content-form" th:action="@{/search-article}">
+        <div class="text-input-container">
+          <h1>Search article</h1>
+          <input class="chosen-value" type="text" name="txtCategory" th:value="${categoryName}" placeholder="Select category"/>
+          <ul class="value-list">
+            <li th:each="category : ${categoryList}" th:text="${category.categoryName}"></li>
+          </ul>
+          <label for="txtCategory" generated="true" class="error"></label><br />
+          <input class="form-input" type="text" name="txtTitle" value="" placeholder="Title" /> <br />
+          <label for="txtTitle" generated="true" class="error"></label><br />
+        </div>
+
+        <button class="submit" type="submit"><span>Search</span></button>
+      </form>
+    </div>
+
+    <div th:if="${listPost != null and !listPost.isEmpty()}">
+				<div th:each="post : ${listPost}" class="search-article">
+          <img th:if="${post.image} != null and ${post.image} != ''"
+						th:src="@{'/image/'+${post.image}}">
+					<img th:if="${post.image} == null or ${post.image} == ''"
+						th:src="@{/image/no_image.png}">
+					<h2>
+            <a th:href="@{'/update-article/'+${post.postId}}" th:text="${post.title}"></a>
+          </h2>
+				</div>
+		</div>
+
+  </div>
+  <script th:src="@{/js/validation/validateSearchArticle.js}"></script>
+  <script th:src="@{/js/selectInput.js}"></script>
+</body>
+
+</html>

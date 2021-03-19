@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments :: head" th:with="title=${Post.title}" />
+
+<body>
+  <div th:include="fragments :: navigation-bar" />
+
+  <div style="min-height: 500px;" class="body">
+    <div class="body-container">
+
+      <div class="main-panel">
+        <div class="post-box" >
+          <h1 th:text="${Post.title}"></h1>
+          <div th:utext="${Post.postContent}">
+
+          </div>
+        </div>
+      </div>
+
+      <div class="side-panel">
+        <div th:replace="fragments :: fix-side-panel" th:with="couponList=${couponList}"/>
+      </div>
+    </div>
+  </div>
+  <div th:include="fragments :: footer" />
+</body>
+
+</html>

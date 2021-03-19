@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments :: head" th:with="title='Main Page'" />
+
+<body>
+  <div th:include="fragments :: navigation-bar" />
+
+  <div style="min-height: 500px;" class="body">
+    <div class="body-container">
+
+      <div class="main-panel">
+        <div class="box">
+          <header class="box-header">
+            <a href="https://freetuts.net/giam-gia" title="Mã giảm giá">Coupon giảm giá</a>
+          </header>
+          <div class="box-content">
+            <div class="owl-carousel owl-theme owl-loaded" data-item="3">
+              <div class="owl-stage-outer">
+                <div class="owl-stage">
+
+                  <div th:each="discountPost : ${discountPostList}" class="owl-item">
+                    <a th:href="@{'/' + ${discountPost.postId}}" th:title="${discountPost.title}">
+                      <img th:if="${discountPost.image} != null and ${discountPost.image} != ''"
+            						th:src="@{'/image/'+${discountPost.image}}" th:alt="${discountPost.title}">
+            					<img th:if="${discountPost.image} == null or ${discountPost.image} == ''"
+            						th:src="@{/image/no_image.png}" th:alt="${discountPost.title}">
+                    </a>
+                    <h3>
+                      <a class="post-title" th:text="${discountPost.title}" th:href="@{'/' + ${discountPost.postId}}" th:title="${discountPost.title}">
+                      </a>
+                    </h3>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+              $(document).ready(function() {
+                $('.owl-carousel').owlCarousel({
+                  loop: false,
+                });
+              });
+            </script>
+          </div>
+        </div>
+
+        <div class="box">
+          <header class="box-header">
+            <h2>Lập trình</h2>
+          </header>
+
+          <div class="box-content">
+            <div class="newest-post">
+              <div class="news-image">
+                <a th:href="@{'/' + ${programPostList[0].postId}}" th:title="' ' + ${programPostList[0].postId}">
+                  <img th:if="${programPostList[0].image} != null and ${programPostList[0].image} != ''"
+                    th:src="@{'/image/'+${programPostList[0].image}}" th:alt="${programPostList[0].title}" width="284" height="180">
+                  <img th:if="${programPostList[0].image} == null or ${programPostList[0].image} == ''"
+                    th:src="@{/image/no_image.png}" th:alt="${programPostList[0].title}" width="284" height="180">
+                </a>
+              </div>
+              <div class="news-summary">
+                <h3>
+                  <a th:text="${programPostList[0].title}" class="post-title" th:href="@{'/' + ${programPostList[0].postId}}"  th:title="' ' + ${programPostList[0].postId}">
+                  </a>
+                </h3>
+                <p th:text="${#strings.abbreviate(programPostList[0].description,30)}">
+                </p>
+              </div>
+            </div>
+
+            <div class="older-articles">
+              <div th:each="post : ${programPostList}" class="article" th:if= "${postStat.index} != 0">
+                <a th:href="@{'/' + ${post.postId}}" th:title="' ' + ${post.postId}">
+                  <img th:if="${post.image} != null and ${post.image} != ''"
+        						th:src="@{'/image/'+${post.image}}" th:alt="${post.title}">
+        					<img th:if="${post.image} == null or ${post.image} == ''"
+        						th:src="@{/image/no_image.png}" th:alt="${post.title}">
+                </a>
+                <div class="detail">
+                  <a th:text="${post.title}" class="post-title" th:href="@{'/' + ${post.postId}}" th:title="' ' + ${post.postId}">
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="box">
+          <header class="box-header">
+            <h2>Web miễn phí</h2>
+          </header>
+
+          <div class="box-content">
+            <div class="newest-post">
+              <div class="news-image">
+                <a th:href="@{'/' + ${webPostList[0].postId}}" th:title="' ' + ${webPostList[0].postId}">
+                  <img th:if="${webPostList[0].image} != null and ${webPostList[0].image} != ''"
+                    th:src="@{'/image/'+${webPostList[0].image}}" th:alt="${webPostList[0].title}" width="284" height="180">
+                  <img th:if="${webPostList[0].image} == null or ${webPostList[0].image} == ''"
+                    th:src="@{/image/no_image.png}" th:alt="${webPostList[0].title}" width="284" height="180">
+                </a>
+              </div>
+              <div class="news-summary">
+                <h3>
+                  <a th:text="${webPostList[0].title}" class="post-title" th:href="@{'/' + ${webPostList[0].postId}}"  th:title="' ' + ${webPostList[0].postId}">
+                  </a>
+                </h3>
+                <p th:text="${#strings.abbreviate(webPostList[0].description,30)}">
+                </p>
+              </div>
+            </div>
+
+            <div class="older-articles">
+              <div th:each="post : ${webPostList}" class="article" th:if= "${postStat.index} != 0">
+                <a th:href="@{'/' + ${post.postId}}" th:title="' ' + ${post.postId}">
+                  <img th:if="${post.image} != null and ${post.image} != ''"
+        						th:src="@{'/image/'+${post.image}}" th:alt="${post.title}">
+        					<img th:if="${post.image} == null or ${post.image} == ''"
+        						th:src="@{/image/no_image.png}" th:alt="${post.title}">
+                </a>
+                <div class="detail">
+                  <a th:text="${post.title}" class="post-title" th:href="@{'/' + ${post.postId}}" th:title="' ' + ${post.postId}">
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="box-view-more">
+            <a th:href="@{/web-mien-phi}" title="Web miễn phí">
+              Xem thêm
+              <i class="fas fa-long-arrow-alt-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="box">
+          <header class="box-header">
+            <h2>QUẢN TRỊ WEB</h2>
+          </header>
+
+          <div class="box-content">
+            <div class="newest-post">
+              <div class="news-image">
+                <a th:href="@{'/' + ${webmastersPostList[0].postId}}" th:title="' ' + ${webmastersPostList[0].postId}">
+                  <img th:if="${webmastersPostList[0].image} != null and ${webmastersPostList[0].image} != ''"
+                    th:src="@{'/image/'+${webmastersPostList[0].image}}" th:alt="${webmastersPostList[0].title}" width="284" height="180">
+                  <img th:if="${webmastersPostList[0].image} == null or ${webmastersPostList[0].image} == ''"
+                    th:src="@{/image/no_image.png}" th:alt="${webmastersPostList[0].title}" width="284" height="180">
+                </a>
+              </div>
+              <div class="news-summary">
+                <h3>
+                  <a th:text="${webmastersPostList[0].title}" class="post-title" th:href="@{'/' + ${webmastersPostList[0].postId}}"  th:title="' ' + ${webmastersPostList[0].postId}">
+                  </a>
+                </h3>
+                <p th:text="${#strings.abbreviate(webmastersPostList[0].description,30)}">
+                </p>
+              </div>
+            </div>
+
+            <div class="older-articles">
+              <div th:each="post : ${webmastersPostList}" class="article" th:if= "${postStat.index} != 0">
+                <a th:href="@{'/' + ${post.postId}}" th:title="' ' + ${post.postId}">
+                  <img th:if="${post.image} != null and ${post.image} != ''"
+        						th:src="@{'/image/'+${post.image}}" th:alt="${post.title}">
+        					<img th:if="${post.image} == null or ${post.image} == ''"
+        						th:src="@{/image/no_image.png}" th:alt="${post.title}">
+                </a>
+                <div class="detail">
+                  <a th:text="${post.title}" class="post-title" th:href="@{'/' + ${post.postId}}" th:title="' ' + ${post.postId}">
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="box-view-more">
+            <a th:href="@{/webmaster}" title="QUẢN TRỊ WEB">
+              Xem thêm
+              <i class="fas fa-long-arrow-alt-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="box">
+          <header class="box-header">
+            <h2>TIN HỌC</h2>
+          </header>
+
+          <div class="box-content">
+            <div class="newest-post">
+              <div class="news-image">
+                <a th:href="@{'/' + ${informaticsPostList[0].postId}}" th:title="' ' + ${informaticsPostList[0].postId}">
+                  <img th:if="${informaticsPostList[0].image} != null and ${informaticsPostList[0].image} != ''"
+                    th:src="@{'/image/'+${informaticsPostList[0].image}}" th:alt="${informaticsPostList[0].title}" width="284" height="180">
+                  <img th:if="${informaticsPostList[0].image} == null or ${informaticsPostList[0].image} == ''"
+                    th:src="@{/image/no_image.png}" th:alt="${informaticsPostList[0].title}" width="284" height="180">
+                </a>
+              </div>
+              <div class="news-summary">
+                <h3>
+                  <a th:text="${informaticsPostList[0].title}" class="post-title" th:href="@{'/' + ${informaticsPostList[0].postId}}"  th:title="' ' + ${informaticsPostList[0].postId}">
+                  </a>
+                </h3>
+                <p th:text="${#strings.abbreviate(informaticsPostList[0].description,30)}">
+                </p>
+              </div>
+            </div>
+
+            <div class="older-articles">
+              <div th:each="post : ${informaticsPostList}" class="article" th:if= "${postStat.index} != 0">
+                <a th:href="@{'/' + ${post.postId}}" th:title="' ' + ${post.postId}">
+                  <img th:if="${post.image} != null and ${post.image} != ''"
+        						th:src="@{'/image/'+${post.image}}" th:alt="${post.title}">
+        					<img th:if="${post.image} == null or ${post.image} == ''"
+        						th:src="@{/image/no_image.png}" th:alt="${post.title}">
+                </a>
+                <div class="detail">
+                  <a th:text="${post.title}" class="post-title" th:href="@{'/' + ${post.postId}}" th:title="' ' + ${post.postId}">
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="box-view-more">
+            <a th:href="@{/tin-hoc}" title="TIN HỌC">
+              Xem thêm
+              <i class="fas fa-long-arrow-alt-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="box">
+          <header class="box-header">
+            <h2>THỦ THUẬT</h2>
+          </header>
+
+          <div class="box-content">
+            <div class="newest-post">
+              <div class="news-image">
+                <a th:href="@{'/' + ${tipsPostList[0].postId}}" th:title="' ' + ${tipsPostList[0].postId}">
+                  <img th:if="${tipsPostList[0].image} != null and ${tipsPostList[0].image} != ''"
+                    th:src="@{'/image/'+${tipsPostList[0].image}}" th:alt="${tipsPostList[0].title}" width="284" height="180">
+                  <img th:if="${tipsPostList[0].image} == null or ${tipsPostList[0].image} == ''"
+                    th:src="@{/image/no_image.png}" th:alt="${tipsPostList[0].title}" width="284" height="180">
+                </a>
+              </div>
+              <div class="news-summary">
+                <h3>
+                  <a th:text="${tipsPostList[0].title}" class="post-title" th:href="@{'/' + ${tipsPostList[0].postId}}"  th:title="' ' + ${tipsPostList[0].postId}">
+                  </a>
+                </h3>
+                <p th:text="${#strings.abbreviate(tipsPostList[0].description,30)}">
+                </p>
+              </div>
+            </div>
+
+            <div class="older-articles">
+              <div th:each="post : ${tipsPostList}" class="article" th:if= "${postStat.index} != 0">
+                <a th:href="@{'/' + ${post.postId}}" th:title="' ' + ${post.postId}">
+                  <img th:if="${post.image} != null and ${post.image} != ''"
+        						th:src="@{'/image/'+${post.image}}" th:alt="${post.title}">
+        					<img th:if="${post.image} == null or ${post.image} == ''"
+        						th:src="@{/image/no_image.png}" th:alt="${post.title}">
+                </a>
+                <div class="detail">
+                  <a th:text="${post.title}" class="post-title" th:href="@{'/' + ${post.postId}}" th:title="' ' + ${post.postId}">
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="box-view-more">
+            <a th:href="@{/thu-thuat}" title="THỦ THUẬT">
+              Xem thêm
+              <i class="fas fa-long-arrow-alt-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="box">
+          <header class="box-header">
+            <h2>DOWNLOAD</h2>
+          </header>
+
+          <div class="box-content">
+            <div class="newest-post">
+              <div class="news-image">
+                <a th:href="@{'/' + ${downloadPostList[0].postId}}" th:title="' ' + ${downloadPostList[0].postId}">
+                  <img th:if="${downloadPostList[0].image} != null and ${downloadPostList[0].image} != ''"
+                    th:src="@{'/image/'+${downloadPostList[0].image}}" th:alt="${downloadPostList[0].title}" width="284" height="180">
+                  <img th:if="${downloadPostList[0].image} == null or ${downloadPostList[0].image} == ''"
+                    th:src="@{/image/no_image.png}" th:alt="${downloadPostList[0].title}" width="284" height="180">
+                </a>
+              </div>
+              <div class="news-summary">
+                <h3>
+                  <a th:text="${downloadPostList[0].title}" class="post-title" th:href="@{'/' + ${downloadPostList[0].postId}}"  th:title="' ' + ${downloadPostList[0].postId}">
+                  </a>
+                </h3>
+                <p th:text="${#strings.abbreviate(downloadPostList[0].description,30)}">
+                </p>
+              </div>
+            </div>
+
+            <div class="older-articles">
+              <div th:each="post : ${downloadPostList}" class="article" th:if= "${postStat.index} != 0">
+                <a th:href="@{'/' + ${post.postId}}" th:title="' ' + ${post.postId}">
+                  <img th:if="${post.image} != null and ${post.image} != ''"
+        						th:src="@{'/image/'+${post.image}}" th:alt="${post.title}">
+        					<img th:if="${post.image} == null or ${post.image} == ''"
+        						th:src="@{/image/no_image.png}" th:alt="${post.title}">
+                </a>
+                <div class="detail">
+                  <a th:text="${post.title}" class="post-title" th:href="@{'/' + ${post.postId}}" th:title="' ' + ${post.postId}">
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="box-view-more">
+            <a th:href="@{/tai-ve}" title="DOWNLOAD">
+              Xem thêm
+              <i class="fas fa-long-arrow-alt-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="box">
+          <header class="box-header">
+            <h2>MARKETING</h2>
+          </header>
+
+          <div class="box-content">
+            <div class="newest-post">
+              <div class="news-image">
+                <a th:href="@{'/' + ${marketingPostList[0].postId}}" th:title="' ' + ${marketingPostList[0].postId}">
+                  <img th:if="${marketingPostList[0].image} != null and ${marketingPostList[0].image} != ''"
+                    th:src="@{'/image/'+${marketingPostList[0].image}}" th:alt="${marketingPostList[0].title}" width="284" height="180">
+                  <img th:if="${marketingPostList[0].image} == null or ${marketingPostList[0].image} == ''"
+                    th:src="@{/image/no_image.png}" th:alt="${marketingPostList[0].title}" width="284" height="180">
+                </a>
+              </div>
+              <div class="news-summary">
+                <h3>
+                  <a th:text="${marketingPostList[0].title}" class="post-title" th:href="@{'/' + ${marketingPostList[0].postId}}"  th:title="' ' + ${marketingPostList[0].postId}">
+                  </a>
+                </h3>
+                <p th:text="${#strings.abbreviate(marketingPostList[0].description,30)}">
+                </p>
+              </div>
+            </div>
+
+            <div class="older-articles">
+              <div th:each="post : ${marketingPostList}" class="article" th:if= "${postStat.index} != 0">
+                <a th:href="@{'/' + ${post.postId}}" th:title="' ' + ${post.postId}">
+                  <img th:if="${post.image} != null and ${post.image} != ''"
+        						th:src="@{'/image/'+${post.image}}" th:alt="${post.title}">
+        					<img th:if="${post.image} == null or ${post.image} == ''"
+        						th:src="@{/image/no_image.png}" th:alt="${post.title}">
+                </a>
+                <div class="detail">
+                  <a th:text="${post.title}" class="post-title" th:href="@{'/' + ${post.postId}}" th:title="' ' + ${post.postId}">
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="box-view-more">
+            <a th:href="@{/marketing}" title="MARKETING">
+              Xem thêm
+              <i class="fas fa-long-arrow-alt-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="box">
+          <header class="box-header">
+            <h2>KHÁM PHÁ</h2>
+          </header>
+
+          <div class="box-content">
+            <div class="newest-post">
+              <div class="news-image">
+                <a th:href="@{'/' + ${discoverPostList[0].postId}}" th:title="' ' + ${discoverPostList[0].postId}">
+                  <img th:if="${discoverPostList[0].image} != null and ${discoverPostList[0].image} != ''"
+                    th:src="@{'/image/'+${discoverPostList[0].image}}" th:alt="${discoverPostList[0].title}" width="284" height="180">
+                  <img th:if="${discoverPostList[0].image} == null or ${discoverPostList[0].image} == ''"
+                    th:src="@{/image/no_image.png}" th:alt="${discoverPostList[0].title}" width="284" height="180">
+                </a>
+              </div>
+              <div class="news-summary">
+                <h3>
+                  <a th:text="${discoverPostList[0].title}" class="post-title" th:href="@{'/' + ${discoverPostList[0].postId}}"  th:title="' ' + ${discoverPostList[0].postId}">
+                  </a>
+                </h3>
+                <p th:text="${#strings.abbreviate(discoverPostList[0].description,30)}">
+                </p>
+              </div>
+            </div>
+
+            <div class="older-articles">
+              <div th:each="post : ${discoverPostList}" class="article" th:if= "${postStat.index} != 0">
+                <a th:href="@{'/' + ${post.postId}}" th:title="' ' + ${post.postId}">
+                  <img th:if="${post.image} != null and ${post.image} != ''"
+        						th:src="@{'/image/'+${post.image}}" th:alt="${post.title}">
+        					<img th:if="${post.image} == null or ${post.image} == ''"
+        						th:src="@{/image/no_image.png}" th:alt="${post.title}">
+                </a>
+                <div class="detail">
+                  <a th:text="${post.title}" class="post-title" th:href="@{'/' + ${post.postId}}" th:title="' ' + ${post.postId}">
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="box-view-more">
+            <a th:href="@{/kham-pha}" title="KHÁM PHÁ">
+              Xem thêm
+              <i class="fas fa-long-arrow-alt-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="box">
+          <header class="box-header">
+            <h2>MÔN HỌC</h2>
+          </header>
+
+          <div class="box-content">
+            <div class="newest-post">
+              <div class="news-image">
+                <a th:href="@{'/' + ${studyPostList[0].postId}}" th:title="' ' + ${studyPostList[0].postId}">
+                  <img th:if="${studyPostList[0].image} != null and ${studyPostList[0].image} != ''"
+                    th:src="@{'/image/'+${studyPostList[0].image}}" th:alt="${studyPostList[0].title}" width="284" height="180">
+                  <img th:if="${studyPostList[0].image} == null or ${studyPostList[0].image} == ''"
+                    th:src="@{/image/no_image.png}" th:alt="${studyPostList[0].title}" width="284" height="180">
+                </a>
+              </div>
+              <div class="news-summary">
+                <h3>
+                  <a th:text="${studyPostList[0].title}" class="post-title" th:href="@{'/' + ${studyPostList[0].postId}}"  th:title="' ' + ${studyPostList[0].postId}">
+                  </a>
+                </h3>
+                <p th:text="${#strings.abbreviate(studyPostList[0].description,30)}">
+                </p>
+              </div>
+            </div>
+
+            <div class="older-articles">
+              <div th:each="post : ${studyPostList}" class="article" th:if= "${postStat.index} != 0">
+                <a th:href="@{'/' + ${post.postId}}" th:title="' ' + ${post.postId}">
+                  <img th:if="${post.image} != null and ${post.image} != ''"
+        						th:src="@{'/image/'+${post.image}}" th:alt="${post.title}">
+        					<img th:if="${post.image} == null or ${post.image} == ''"
+        						th:src="@{/image/no_image.png}" th:alt="${post.title}">
+                </a>
+                <div class="detail">
+                  <a th:text="${post.title}" class="post-title" th:href="@{'/' + ${post.postId}}" th:title="' ' + ${post.postId}">
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="box-view-more">
+            <a th:href="@{/mon-hoc}" title="MÔN HỌC">
+              Xem thêm
+              <i class="fas fa-long-arrow-alt-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="side-panel">
+
+        <div th:replace="fragments :: top-side-panel" />
+
+        <div class="side-box">
+
+          <header class="box-header">
+            <h3>Review khóa học</h3>
+          </header>
+
+          <div class="side-box-list-container">
+
+            <div th:each="post : ${coursePostList}" class="side-box-list-item">
+              <a th:href="@{'/' + ${post.postId}}" th:title="' ' + ${post.postId}">
+                <img th:if="${post.image} != null and ${post.image} != ''"
+                  th:src="@{'/image/'+${post.image}}" th:alt="${post.title}" width="90" height="60">
+                <img th:if="${post.image} == null or ${post.image} == ''"
+                  th:src="@{/image/no_image.png}" th:alt="${post.title}" width="90" height="60">
+              </a>
+              <a th:text="${post.title}" class="post-title" th:href="@{'/' + ${post.postId}}" th:title="${post.title}">
+              </a>
+            </div>
+
+            <div class="side-box-list-item" style="text-align: Right; display: block;">
+              <a th:href="@{/khoa-hoc}" title="khóa học">Xem tất cả</a>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="side-box">
+
+          <header class="box-header">
+            <h3>Bài tập</h3>
+          </header>
+
+          <div class="side-box-scrolling-container">
+            <div th:each="post : ${exercisePostList}" class="side-box-scrolling-item">
+              <a th:text="${post.title}" class="post-title" style="margin-left: 0px" th:href="@{'/' + ${post.postId}}" th:title="${post.title}"></a>
+            </div>
+          </div>
+
+        </div>
+
+        <div th:replace="fragments :: fix-side-panel" th:with="couponList=${couponList}"/>
+      </div>
+    </div>
+  </div>
+  <div th:include="fragments :: footer" />
+</body>
+
+</html>
